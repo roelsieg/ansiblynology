@@ -14,11 +14,8 @@ Vagrant.configure("2") do |config|
     ansible.vm.box = "ubuntu/bionic64"
   	ansible.vm.network :forwarded_port, guest: 22, host: 12202, id: 'ssh'
  	  ansible.vm.provision "file", source: "ansible_dev.cfg", destination: "ansible.cfg"
-    ansible.vm.provision "file", source: "j2lint.py3", destination: "j2lint.py"
 	  ansible.vm.provision 'shell', inline: <<-SHELL
       sleep 30
-      sudo cp /vagrant/j2lint.py /usr/local/bin/j2lint.py
-      chmod +x /usr/local/bin/j2lint.py
       chmod +x /vagrant/install.sh
 	    sudo bash /vagrant/install.sh
     SHELL
