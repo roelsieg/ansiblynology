@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
     # ansible.vm.box = "ubuntu/xenial64"
     ansible.vm.box = "ubuntu/bionic64"
   	ansible.vm.network :forwarded_port, guest: 22, host: 12202, id: 'ssh'
- 	  ansible.vm.provision "file", source: "ansible_dev.cfg", destination: "ansible.cfg"
+ 	  ansible.vm.provision "file", source: "ansible.cfg", destination: "ansible.cfg"
 	  ansible.vm.provision 'shell', inline: <<-SHELL
       sleep 30
       chmod +x /vagrant/install.sh
